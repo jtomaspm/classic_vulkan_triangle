@@ -7,17 +7,27 @@ MAIN=main.cpp
 
 BIN=app
 
-$(BIN): main.cpp
+$(BIN): main.cpp shaders
 	$(CC) $(CFLAGS) -o $(BIN) $(MAIN) $(LDFLAGS)
 
 .PHONY: debug test clean
 
-debug: main.cpp
+debug: main.cpp shaders
 	$(CC) $(DUBUGFLAGS) -o $(BIN) $(MAIN) $(LDFLAGS)
 	./$(BIN)
 
 test: $(BIN)
 	./$(BIN)
 
+shaders: shaders/frag.spv shaders/vert.spv
+
+shaders/frag.spv: shaders/shader.frag
+	glslc $< -o $@
+
+shaders/vert.spv: shaders/shader.vert
+	glslc $< -o $@
+
 clean:
 	rm -f $(BIN)
+	rm -f shaders/frag.spv
+	rm -f shaders/vert.spv
