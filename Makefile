@@ -1,7 +1,7 @@
 CC=g++
 CFLAGS= -std=c++17 -O2 -Wall -Wextra -Werror -DNDEBUG
 DUBUGFLAGS= -std=c++17 -O0 -Wall -Wextra -Werror -g -DDEBUG
-LDFLAGS= -lglfw -lvulkan -ldl -lpthread -lX11 -lXxf86vm -lXrandr -lXi
+LDFLAGS= -lglfw3 -lvulkan -ldl -lpthread -lX11 -lXxf86vm -lXrandr -lXi
 
 MAIN=main.cpp
 
